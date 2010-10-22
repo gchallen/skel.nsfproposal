@@ -63,3 +63,10 @@
   \makeevenhead{proposal}{}{}{}
   \makeoddfoot{proposal}{}{\thepage}{}
   \makeoddhead{proposal}{}{}{}
+
+\let\@internalcite\cite
+  \def\fullcite{\def\citeauthoryear##1##2##3{##1, ##3}\@internalcite}
+  \def\fullciteA{\def\citeauthoryear##1##2##3{##1}\@internalcite}
+  \def\shortcite{\def\citeauthoryear##1##2##3{##2, ##3}\@internalcite}
+  \def\shortciteA{\def\citeauthoryear##1##2##3{##2}\@internalcite}
+  \def\citeyear{\def\citeauthoryear##1##2##3{##3}\@internalcite}
