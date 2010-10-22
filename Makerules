@@ -71,6 +71,16 @@ ifeq ($(DOBIBTEX), Yes)
 	pdflatex $(TARGETTEX)
 endif
 
+refs: $(TARGETTEX) references.tex references.bib references.blg $(TEXFILES)
+	@true
+ifeq ($(DOBIBTEX), Yes)
+	pdflatex $(TARGETTEX)
+	bibtex $(TARGET)
+	pdflatex references.tex
+	pdflatex references.tex
+endif
+	
+
 $(PS): $(PDF)
 	acroread -toPostScript $(PDF)
 
