@@ -106,7 +106,7 @@ missing-fail: missing
 	@if [ "$(MISSINGCITATIONS)" != "" ]; then false; fi
 
 clean:
-	@/bin/rm -f $(PDF) *.dvi *.aux *.ps *~ *.log *.lot *.lof *.toc *.blg *.bbl url.sty *.out *.bak .embed.pdf
+	@/bin/rm -f $(PDF) *.dvi *.aux *.ps *~ *.log *.lot *.lof *.toc *.blg *.bbl url.sty *.out *.bak .embed.pdf references.pdf
 
 # 10 Jul 2010 : GWA : A few little convenience things here. Adjust to your
 #               specifications.
