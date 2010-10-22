@@ -17,14 +17,6 @@ LOG = $(addsuffix .log, $(TARGET))
 DOBIBTEX = $(shell if [ -n "`grep '\\cite' $(TEXFILES) /dev/null 2>/dev/null`" ] ; then echo "Yes"; else echo "No"; fi)
 
 # 10 Jul 2010 : GWA : You will probably want to change these targets.
-#               For now:
-#               Default is draft.
-#               Draft builds single spaced, with XXXnotes, and missing
-#               references check.
-#               Final builds double spaces, without XXXnotes, with
-#               missing references check and embedded fonts. Depending on
-#               your system the embed magic below may or may not work
-#               properly or at all. Give it a go and see what happens.
 #         
 #               If you want to be even more careful about references you can
 #               define "missing-fail" which will halt the build if it finds a
@@ -33,8 +25,8 @@ DOBIBTEX = $(shell if [ -n "`grep '\\cite' $(TEXFILES) /dev/null 2>/dev/null`" ]
 #               chapters will likely be broken.
 
 all: draft
-draft: xxxnote $(PDF) missing
-final: noxxxnote $(PDF) missing embed
+draft: xxxnote $(PDF) missing refs
+final: noxxxnote $(PDF) missing embed refs
 
 xxxnote:
 	@echo "\\newcommand{\\XXXnote}[1]{\\textcolor{red}{\\bf XXX: #1}}" > .xxxnote-new
