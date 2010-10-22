@@ -1,5 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{nsfproposal}[]
+
+% 22 Oct 2010 : GWA : New proposal class. Originally based on the
+%               proposalnsf.cls file downloaded from here:
+% http://www-pord.ucsd.edu/~sgille/how_to/proposal_prep.html
+
+\ProvidesClass{nsfproposal}[2010/10/22 GWA NSF Proposal Class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions
 \LoadClass[12pt,onecolumn,oneside,article,final]{memoir}
@@ -28,12 +33,6 @@
 
 \setlrmarginsandblock{1in}{1in}{*}
 
-% 22 Oct 2010 : GWA : Not sure how to translate these options or what they
-%               do.
-
-% \addtolength{\voffset}{-1in}
-% \addtolength{\hoffset}{-1in}
-
 % 22 Oct 2010 : GWA : Used to be:
 % \setlength{\topmargin}{1in}
 % \setlength{\headheight}{0pt}
@@ -53,7 +52,11 @@
 
 \setmarginnotes{0.5cm}{1.5cm}{0.1cm}
 
+% 22 Oct 2010 : GWA : memoir command to actually apply the layout.
+
 \checkandfixthelayout
+
+% 22 Oct 2010 : GWA : Proposal page style.
 
 \makepagestyle{proposal}
   \makeevenfoot{proposal}{}{\thepage}{}

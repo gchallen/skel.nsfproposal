@@ -1,4 +1,4 @@
-TARGET = internal
+TARGET = proposal
 
 # 10 Jul 2010 : GWA : Add subdirs here as needed. They will be built into the
 # 						  complete document in order. Probably best to have each
