@@ -4,10 +4,13 @@
 %               proposalnsf.cls file downloaded from here:
 % http://www-pord.ucsd.edu/~sgille/how_to/proposal_prep.html
 
+\RequirePackage{color}
+\RequirePackage{calc}
+\RequirePackage{mathpazo}
 \ProvidesClass{nsfproposal}[2010/10/22 GWA NSF Proposal Class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions
-\LoadClass[12pt,onecolumn,oneside,article,final]{memoir}
+\LoadClass[12pt,onecolumn,oneside,final]{memoir}
 
 % 22 Oct 2010 : GWA : Set up simple chapter headings.
 
@@ -70,3 +73,25 @@
   \def\shortcite{\def\citeauthoryear##1##2##3{##2, ##3}\@internalcite}
   \def\shortciteA{\def\citeauthoryear##1##2##3{##2}\@internalcite}
   \def\citeyear{\def\citeauthoryear##1##2##3{##3}\@internalcite}
+
+\makechapterstyle{proposal}{%
+  \renewcommand{\chapterheadstart}{} 
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\printchapternum}{} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptertitle}[1]{%
+    \Large\scshape\MakeUppercase{##1}
+  } 
+  \renewcommand{\afterchaptertitle}{\vspace{0.5\onelineskip} \hrule \vspace{0.5\onelineskip}}
+} 
+\definecolor{shadecolor}{gray}{0.9}
+\newcommand{\proposalsec}[1]{%
+  \large\bfseries\raggedright #1
+}
+\setsecheadstyle{\proposalsec}
+\nonzeroparskip
+\setlength{\parindent}{0pt}
+\renewcommand{\thesection}{\arabic{section}}
+\chapterstyle{proposal}
+\setsecnumformat{\csname the#1\endcsname\space---\space}

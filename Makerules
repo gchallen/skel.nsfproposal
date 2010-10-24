@@ -14,7 +14,7 @@ LOG = $(addsuffix .log, $(TARGET))
 # 10 Jul 2010 : GWA : Decide whether to run bibtex by grepping for "\cite"
 #               commands.
 
-DOBIBTEX = $(shell if [ -n "`grep '\\cite' $(TEXFILES) /dev/null 2>/dev/null`" ] ; then echo "Yes"; else echo "No"; fi)
+DOBIBTEX = $(shell if [ -n "`grep '\\\\cite' $(TEXFILES) /dev/null 2>/dev/null`" ] ; then echo "Yes"; else echo "No"; fi)
 
 # 10 Jul 2010 : GWA : You will probably want to change these targets.
 #         
@@ -29,7 +29,7 @@ draft: xxxnote $(PDF) missing refs
 final: noxxxnote $(PDF) missing embed refs
 
 xxxnote:
-	@echo "\\newcommand{\\XXXnote}[1]{\\textcolor{red}{\\bf XXX: #1}}" > .xxxnote-new
+	@echo "\\newcommand{\\XXXnote}[1]{\\textcolor{red}{\\bfseries XXX: #1}}" > .xxxnote-new
 	@if [ -n "`diff -N 2>/dev/null .xxxnote .xxxnote-new`" ]; then\
 		mv .xxxnote-new .xxxnote; \
 		else\
