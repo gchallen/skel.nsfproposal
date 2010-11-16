@@ -1,5 +1,5 @@
-\documentclass{nsfproposal}
-\usepackage{url,graphicx,color,multirow,hyperref}
+\documentclass[12pt]{nsfproposal}
+\usepackage{url,graphicx,multirow,hyperref}
 \hypersetup{
   bookmarks=true,
   unicode=true,
@@ -22,13 +22,28 @@
 }
 
 \input{.xxxnote}
+\input{common.tex}
+\pagestyle{plain}
 
 \begin{document}
-\pagestyle{proposal}
+\chapterstyle{proposal}
+\pagenumbering{arabic}
+\input{summary.tex}
+\clearpage
+%\input{description.tex}
+%\input{background.tex}
+%\input{researchtasks.tex}
+%\input{broaderimpacts.tex}
+%\input{vision.tex}
+
+\clearpage
+\pagenumbering{gobble}
+\bibliography{references,geoffreychallen}
+\bibliographystyle{plain}
+
+\clearpage
+\input{biosketches.tex}
 
 % 11 Jan 2010 : GWA : Bibliography.
-
-\bibliography{references}
-\bibliographystyle{plain}
 
 \end{document}

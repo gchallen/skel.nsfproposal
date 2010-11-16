@@ -7,10 +7,11 @@
 \RequirePackage{color}
 \RequirePackage{calc}
 \RequirePackage{mathpazo}
+\RequirePackage{ulem}
 \ProvidesClass{nsfproposal}[2010/10/22 GWA NSF Proposal Class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions
-\LoadClass[12pt,onecolumn,oneside,final]{memoir}
+\LoadClass[onecolumn,oneside,final]{memoir}
 
 % 22 Oct 2010 : GWA : Set up simple chapter headings.
 
@@ -47,7 +48,7 @@
 % \setlength{\footskip}{36pt}
 % \setlength{\headheight}{0pt}
 
-\setheadfoot{0pt}{36pt}
+\setheadfoot{0.1pt}{36pt}
 
 % 22 Oct 2010 : GWA : Used to be:
 % \setlength{\marginparsep}{0.5cm}
@@ -60,12 +61,6 @@
 \checkandfixthelayout
 
 % 22 Oct 2010 : GWA : Proposal page style.
-
-\makepagestyle{proposal}
-  \makeevenfoot{proposal}{}{\thepage}{}
-  \makeevenhead{proposal}{}{}{}
-  \makeoddfoot{proposal}{}{\thepage}{}
-  \makeoddhead{proposal}{}{}{}
 
 \let\@internalcite\cite
   \def\fullcite{\def\citeauthoryear##1##2##3{##1, ##3}\@internalcite}
@@ -85,6 +80,15 @@
   } 
   \renewcommand{\afterchaptertitle}{\vspace{0.5\onelineskip} \hrule \vspace{0.5\onelineskip}}
 } 
+\makechapterstyle{letter}{%
+  \renewcommand{\chapterheadstart}{} 
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\printchapternum}{} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptertitle}[1]{}
+  \renewcommand{\afterchaptertitle}{}
+} 
 \definecolor{shadecolor}{gray}{0.9}
 \newcommand{\proposalsec}[1]{%
   \large\bfseries\raggedright #1
@@ -94,4 +98,37 @@
 \setlength{\parindent}{0pt}
 \renewcommand{\thesection}{\arabic{section}}
 \chapterstyle{proposal}
+
+% 26 Oct 2010 : GWA : Section styles.
 \setsecnumformat{\csname the#1\endcsname\space---\space}
+\setbeforesecskip{-2.0ex plus -0.5ex minus -0.2ex}
+\setaftersecskip{1.0ex plus 0.2ex minus 0.1ex}
+
+% 26 Oct 2010 : GWA : Subsection styles.
+\setcounter{secnumdepth}{2}
+\setsubsecheadstyle{\bfseries\raggedright}
+\setbeforesubsecskip{-0.5ex plus -0.2ex minus -0.2ex}
+\setaftersubsecskip{-0.5ex plus -0.2ex minus -0.2ex}
+
+\newcounter{flushenumbfenum}
+\newenvironment{flushenumbf}{
+  \begin{list}{\textbf{\arabic{flushenumbfenum}.}}
+    {\setlength{\leftmargin}{0pt}}%
+     \setlength{\labelwidth}{0pt}
+     \setlength{\itemindent}{0.5em}
+     \setlength{\labelsep}{0.5em}
+     \usecounter{flushenumbfenum}}
+  {\end{list}} 
+
+\tightlists
+\firmlists
+\renewcommand{\bibname}{References}
+\renewcommand{\thetable}{\arabic{table}}
+\newenvironment{indentpar}[1]{
+  \begin{list}{}%
+           {\setlength{\leftmargin}{#1}}%
+            \setlength{\itemindent}{0em}
+            \setlength{\parskip}{0pt}
+            \setlength{\parsep}{0pt}
+            \setlength{\labelsep}{0em}}
+  {\end{list}}
