@@ -7,3 +7,4 @@ references.pdf
 *.out
 *.bbl
 *.blg
+.deps
