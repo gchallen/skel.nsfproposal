@@ -22,7 +22,7 @@ except:
 docfile = re.compile(r"^[^%]*?\\begin\{document\}", re.M)
 inputs = re.compile(r"^[^%]*?\\input{(.*)}", re.M)
 bibs = re.compile(r"^[^%]*?\\bibliography\{(.*)\}", re.M)
-citations = re.compile(r"^[^%]*?\\cite", re.M)
+citations = re.compile(r"^[^%]*?\\(no)?cite", re.M)
 graphics = re.compile(r"^[^%]*?\\includegraphics(\[.*?\])?\{(.*?)\}", re.M)
 withpdf = re.compile(r"^.*\.pdf$")
 
@@ -56,10 +56,10 @@ for f in files:
           bib_files.append(bib + ".bib")
       g = graphics.finditer(lines)
       for m in g:
-        if withpdf.match(m.group(1)):
-          graphic_files.append(m.group(1))
+        if withpdf.match(m.group(2)):
+          graphic_files.append(m.group(2))
         else:
-          graphic_files.append(m.group(1) + ".pdf")
+          graphic_files.append(m.group(2) + ".pdf")
     except:
       True
     input_files.append(toprocess.pop(0))
@@ -68,6 +68,8 @@ for f in files:
   if docitations:
     all_files.append(fbasename + ".blg")
   all_files.extend(graphic_files) 
+  for file in args[1:]:
+    all_files.append(file)
   allnames.append(fbasename)
 
   print >>output, "%s : LOG := %s.log" % (fbasename, fbasename)
@@ -91,6 +93,5 @@ for f in files:
     print >>output, "\tpdflatex %s" % (f)
     
 print >>outfile, output.getvalue(),
-# print >>outfile, "all: %s" % (" ".join(allnames))
 print >>outfile, "PDFS = %s" % (" ".join([n + ".pdf" for n in allnames]))
 print args[0]

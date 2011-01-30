@@ -12,12 +12,15 @@ TEXFILES = $(shell find . -name "*.tex")
 # 							enabling/disabling Bibtex as needed.
 
 .deps: $(TEXFILES)
-	./bin/texincludes .deps
+	./bin/texincludes .deps nsfproposal.cls
 include .deps
 
 %.ps : %.pdf
 	acroread -toPostScript $<
-	
+
+allclean: rulesclean
+	@/bin/rm -f .deps
+
 rulesclean:
 	@/bin/rm -f *.dvi *.aux *.ps *~ *.log *.lot *.lof *.toc *.blg *.bbl url.sty *.out *.bak *.pdf
 
@@ -70,4 +73,4 @@ pages: $(PDF)
 
 # 16 Nov 2010 : GWA : Phony targets.
 
-.PHONY : pages rulesclean missing-fail missing xxxnote noxxxnote clean all
+.PHONY : pages rulesclean missing-fail missing xxxnote noxxxnote clean all allclean
