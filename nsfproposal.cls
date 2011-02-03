@@ -273,3 +273,9 @@
 \captiontitlefont{\small}
 \nonzeroparskip
 \setlength{\parindent}{0pt}
+
+\copypagestyle{nsfproposal}{headings}
+\makeoddhead{nsfproposal}{{\scshape \small \shorttitle}}{}{{\scshape \small \shortauthors}}
+\makeevenhead{nsfproposal}{{\scshape \small \shorttitle}}{}{{\scshape \small \shortauthors}}
+\makeoddfoot{nsfproposal}{}{\thepage}{}
+\makeevenfoot{nsfproposal}{}{\thepage}{}
