@@ -1,5 +1,6 @@
 START = xxxnote
 END = missing
+CLASS = $(PYTEX)/cls/nsfcnsproposal.cls
 
 all: proposal
 
@@ -7,4 +8,4 @@ all: proposal
 
 clean: rulesclean
 
-include Makerules
+include $(PYTEX)/make/Makerules

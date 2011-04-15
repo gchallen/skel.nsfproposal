@@ -1,5 +1,6 @@
 START = noxxxnote
 END = missing
+CLASS = $(PYTEX)/cls/nsfcnsproposal.cls
 
 all: geoffreychallen-separate template-separate
 
@@ -7,4 +8,4 @@ all: geoffreychallen-separate template-separate
 
 clean: rulesclean
 
-include ../Makerules
+include $(PYTEX)/make/Makerules
