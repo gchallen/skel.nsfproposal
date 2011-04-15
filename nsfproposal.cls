@@ -13,7 +13,6 @@
 \ProcessOptions
 \LoadClass[onecolumn,oneside,final]{memoir}
 \RequirePackage{colortbl}
-\RequirePackage{datetime}
 \RequirePackage{threeparttable}
 
 % 22 Oct 2010 : GWA : Set up simple chapter headings.
@@ -83,7 +82,6 @@
   } 
   \renewcommand{\afterchaptertitle}{\vspace{0.5\onelineskip} \hrule \vspace{0.5\onelineskip}}
 } 
-\mmddyyyydate
 \makechapterstyle{summary}{%
   \renewcommand{\chapterheadstart}{}
   \renewcommand{\printchaptername}{} 
@@ -101,7 +99,7 @@
 \vspace{0pt}
 \raggedleft
 {\small \scshape NSF Proposal\\
-\today}
+\submissiondate}
 \end{minipage}
 {\large\theauthors}
 }
@@ -273,9 +271,3 @@
 \captiontitlefont{\small}
 \nonzeroparskip
 \setlength{\parindent}{0pt}
-
-\copypagestyle{nsfproposal}{headings}
-\makeoddhead{nsfproposal}{{\scshape \small \shorttitle}}{}{{\scshape \small \shortauthors}}
-\makeevenhead{nsfproposal}{{\scshape \small \shorttitle}}{}{{\scshape \small \shortauthors}}
-\makeoddfoot{nsfproposal}{}{\thepage}{}
-\makeevenfoot{nsfproposal}{}{\thepage}{}
